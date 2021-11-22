@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const WOKCommands = require('wokcommands')
-require('dotenv').config()
 const client = new Discord.Client({
     
     allowedMentions: {
