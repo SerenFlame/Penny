@@ -28,9 +28,14 @@ module.exports = {
         const Amount = options.getNumber("amount");
         const Target = options.getMember("target");
 
-        const Messages = await channel.messages.fetch();
+        const Messages = await channel.messageCreate.fetch();
         const Response = new MessageEmbed()
         .setColor("RANDOM")
+
+        if(Amount > 100 || Amount <= 0) {
+            Response.setDescription(`Amount cannot exceed 100, and cannot be under 1.`)
+            return interaction.reply({embeds: [Response]})
+     }
 
         if(Target) {
             let i = 0;
@@ -42,13 +47,13 @@ module.exports = {
                 }
             })
 
-            await channel.bulkDelete(filtered, true).then(messages => {
-                Response.setDescription(`⚔ ${messages.size} purged from ${Target}.`)
+            await channel.bulkDelete(filtered, true).then(messageCreate => {
+                Response.setDescription(`⚔ ${messageCreate.size} purged from ${Target}.`)
                 interaction.reply({embeds: [Response]})
             })
         } else {
-            await channel.bulkDelete(Amount, true).then(messages => {
-                Response.setDescription(`⚔ ${messages.size} purged from this channel.`)
+            await channel.bulkDelete(Amount, true).then(messageCreate => {
+                Response.setDescription(`⚔ ${messageCreate.size} purged from this channel.`)
                 interaction.reply({embeds: [Response]})
             })
         }
