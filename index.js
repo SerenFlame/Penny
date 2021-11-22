@@ -88,7 +88,7 @@ client.on('messageCreate', messageCreate => {
     client.on('ready', () => {
         console.log('The bot is ready')
       
-        new WOKCommands(client, 'commands', 'features')
+        new WOKCommands(client, 'features')
       })
 
 client.login(process.env.token);
