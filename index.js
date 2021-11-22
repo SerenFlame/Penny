@@ -16,6 +16,16 @@ const client = new Discord.Client({
     ],
 })
 
+let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"))
+
+if(!prefixes[message.guild.id]) {
+    prefixes[message.guild.id] = {
+        prefixes: botconfig.prefix
+    }
+}
+
+let prefix = prefixes[message.guild.id].prefixes
+
 const welcome = require("./welcome");
 
 client.on('ready', () =>{
