@@ -23,7 +23,6 @@ for(const file of commandFiles){
     client.commands.set(command.name, command) 
 }
 
-const { prefix, token } = require('./config.json')
 const welcome = require('./commands/welcome'); // Add This
 
 
