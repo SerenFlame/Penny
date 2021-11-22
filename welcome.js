@@ -8,7 +8,7 @@ client.on("guildMemberAdd", (member) => {
 
         const newEmbed = new MessageEmbed()
             .setTitle (`Welcome to ${member.guild.name}`)
-            .setThumbnail(url=imgur.com/4abUPBy({dynamic: true, size: 512}))
+            .setThumbnail(member.user.displayAvatarURL({dynamic: true, size: 512}))
             .setDescription (`Welcome to Discord Tambayan, <@${member.user.id}>. I am Penny, nice to meet you!`)
             .setFooter (`Welcome` ,member.user.displayAvatarURL({dynamic: true, size:512}))
             .setColor('RANDOM')
