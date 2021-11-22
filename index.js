@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const token = 'OTAxMTI2NDA0Nzk4ODMyNjgw.YXLVXQ.d8LirP2oUP_ZCqzLrkDlRB7e9MM'
+const WOKCommands = require('wokcommands')
+require('dotenv').config()
 const client = new Discord.Client({
     
     allowedMentions: {
@@ -83,6 +84,12 @@ client.on('messageCreate', messageCreate => {
     }
     
     });
+
+    client.on('ready', () => {
+        console.log('The bot is ready')
+      
+        new WOKCommands(client, 'commands', 'features')
+      })
 
 client.login(process.env.token);
 
