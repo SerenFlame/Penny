@@ -1,5 +1,7 @@
 const { MessageEmbed } = require('Discord.js')
 module.exports = {
+    const prefix = "!";
+    
     name: "announce",
     description: "Get the bot to say what you want in a specific channel",
     usage "<channel id> <msg>",
