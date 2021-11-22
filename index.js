@@ -15,21 +15,7 @@ const client = new Discord.Client({
     ],
 })
 
-client.commands = new Discord.Collection();
-const fs = require('fs');
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
-for(const file of commandFiles){
-    const command = require(`./commands/${file}`)
-    client.commands.set(command.name, command) 
-}
-
-const welcome = require('./commands/welcome'); // Add This
-
-
-client.once('ready', () => {
-    console.log('Ready.')
-    welcome(client) // Add This
-})
+const welcome = require('./commands/welcome'); 
 
 client.on('ready', () =>{
     console.log('Bot online')
@@ -100,7 +86,7 @@ client.on('messageCreate', messageCreate => {
     client.on('message', message => {
         if(!message.content.startsWith(prefix)||message.author.bot) return
     
-        const args = message.content.slice(prefix.length).split(/ !/)
+        const args = message.content.slice(prefix.length).split(/ +/)
         const command = args.shift().toLowerCase()
     
         if(command === 'ping'){
