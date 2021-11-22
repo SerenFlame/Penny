@@ -3,7 +3,7 @@ module.exports = {
     name: "announce"
     description: "Get the bot to say what you want in a specific channel"
     usage "<channel id> <msg>"
-    run: async(bot,message,args) => {
+    async(bot,message,args) => {
         let rChannel =  message.guild.channels.cache.get.(args[0])
         if(!rChannel)return message.channel.send(`You did not specify where to annouce!`)
         console.log(rChannel)
