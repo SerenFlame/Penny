@@ -85,3 +85,4 @@ client.on('messageCreate', messageCreate => {
     });
 
 client.login(process.env.token);
+
