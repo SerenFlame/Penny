@@ -1,9 +1,9 @@
 module.exports = (client) => {
-    client.on('message', (message) => {
-      const { channel } = message
+    client.on('message', (messageCreate) => {
+      const { channel } = messageCreate
   
       if (channel.type === 'news') {
-        message.crosspost()
+        messageCreate.crosspost()
         console.log('published news message')
       }
     })
