@@ -16,4 +16,4 @@ module.exports = {
         rChannel.send(em)
         message.delete()
     }
-}
+}   
