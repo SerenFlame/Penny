@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const WOKCommands = require('wokcommands')
 require('dotenv').config()
 const client = new Discord.Client({
     
@@ -84,5 +85,10 @@ client.on('messageCreate', messageCreate => {
     
     });
 
-client.login(process.env.token);
+    client.on('ready', () => {
+        console.log('The bot is ready')
+      
+        new WOKCommands(client, 'commands', 'features')
+      })
 
+client.login(process.env.token);
