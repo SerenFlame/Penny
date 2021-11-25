@@ -18,7 +18,6 @@ const client = new Discord.Client({
 const prefix = "!";
 const welcome = require('./commands/welcome'); 
 const setup = require('./Reaction Roles/setup');
-const EditMessage = require('./utils/EditMessage');
 const fs = require('fs');
 client.commands = new Discord.Collection();
 
@@ -33,7 +32,6 @@ client.on('ready', () =>{
     console.log('Bot online')
 
     welcome(client);
-    EditMessage(client);
     setup(client);
 })
 
