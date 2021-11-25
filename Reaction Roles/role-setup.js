@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const EditMessage = require('../../utils/EditMessage')
+const EditMessage = require('../utils/EditMessage')
 
 module.exports = (client) => {
     EditMessage(client, '870135591835168778', new MessageEmbed()
