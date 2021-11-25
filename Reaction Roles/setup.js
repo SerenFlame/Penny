@@ -1,63 +1,30 @@
-module.exports = {
-    name: 'reactionrole',
-    description: "Sets up a reaction role message!",
-    async run(message, args, Discord, client) {
-        const channel = '870135591835168778';
-        const yellowTeamRole = message.guild.roles.cache.find(role => role.name === "913474970930249778");
-        const blueTeamRole = message.guild.roles.cache.find(role => role.name === "913475023619100752");
- 
-        const yellowTeamEmoji = '🍋';
-        const blueTeamEmoji = '🍇';
- 
-        let embed = new Discord.MessageEmbed()
-            .setColor('#e42643')
-            .setTitle('Choose a team to play on!')
-            .setDescription('Choosing a team will allow you to interact with your teammates!\n\n'
-                + `${yellowTeamEmoji} for yellow team\n`
-                + `${blueTeamEmoji} for blue team`);
- 
-        let messageEmbed = await message.channel.send(embed);
-        messageEmbed.react(yellowTeamEmoji);
-        messageEmbed.react(blueTeamEmoji);
- 
-        client.on('messageReactionAdd', async (reaction, user) => {
-            if (reaction.message.partial) await reaction.message.fetch();
-            if (reaction.partial) await reaction.fetch();
-            if (user.bot) return;
-            if (!reaction.message.guild) return;
- 
-            if (reaction.message.channel.id == channel) {
-                if (reaction.emoji.name === yellowTeamEmoji) {
-                    await reaction.message.guild.members.cache.get(user.id).roles.add(yellowTeamRole);
-                }
-                if (reaction.emoji.name === blueTeamEmoji) {
-                    await reaction.message.guild.members.cache.get(user.id).roles.add(blueTeamRole);
-                }
-            } else {
-                return;
-            }
- 
-        });
- 
-        client.on('messageReactionRemove', async (reaction, user) => {
- 
-            if (reaction.message.partial) await reaction.message.fetch();
-            if (reaction.partial) await reaction.fetch();
-            if (user.bot) return;
-            if (!reaction.message.guild) return;
- 
- 
-            if (reaction.message.channel.id == channel) {
-                if (reaction.emoji.name === yellowTeamEmoji) {
-                    await reaction.message.guild.members.cache.get(user.id).roles.remove(yellowTeamRole);
-                }
-                if (reaction.emoji.name === blueTeamEmoji) {
-                    await reaction.message.guild.members.cache.get(user.id).roles.remove(blueTeamRole);
-                }
-            } else {
-                return;
-            }
-        });
-    }
- 
-}   
+const Discord = require("discord.js")
+const { MessageButton, MessageActionRow } = require("discord-buttons")
+
+module.exports = async (client, messageCreate, args, prefix) => {
+
+    const embed = new Discord.MessageEmbed()
+    .setTitle("Pick a role, any role")
+    .setDescription("Pick a role to access the channels.")
+    .setColor("NAVY")
+    
+    const bt1 = new MessageButton()
+    .setStyle("green")
+    .setLabel("Yes")
+    .setID("1")
+
+    const bt2 = new MessageButton()
+    .setStyle("green")
+    .setLabel("No")
+    .setID("2")
+
+    const yes = new MessageActionRow()
+    .addComponent(btn1)
+    .addComponent(btn2)
+
+    messageCreate.channel.send('Hello', {
+        embeds: embed, 
+        component: yes
+    })
+
+}

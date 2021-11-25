@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const buttons = require('discord-buttons')
 const client = new Discord.Client({
     
     allowedMentions: {
@@ -18,16 +19,6 @@ const client = new Discord.Client({
 const prefix = "!";
 const welcome = require('./commands/welcome'); 
 const setup = require('./Reaction Roles/setup');
-const fs = require('fs');
-
-client.commands = new Discord.Collection();
-
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
- 
-    client.commands.set(command.name, command);
-}
 
 client.on('ready', () =>{
     console.log('Bot online')
@@ -94,19 +85,5 @@ client.on('messageCreate', messageCreate => {
     }
     
     });
-
-    module.exports.run = async function (client, message, args, config, gdb, prefix, permissionLevel, db) {
-    client.on('message', message => {
- 
-        if (!message.content.startsWith(prefix) || message.author.bot) return;
-     
-        const args = message.content.slice(prefix.length).split(/ +/);
-        const command = args.shift().toLowerCase();
-        if (command === 'reactionrole') {
-            client.commands.get('reactionrole').run(message, args, Discord, client);
-        } 
-      
-    })
-}
 
 client.login(process.env.token);
