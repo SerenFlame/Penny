@@ -2,7 +2,6 @@ const { Client, Message, MessageActionRow, MessageButton } = require('discord.js
 
 module.exports = { 
     name: "role"   
-    description: "Pick any role to access more of the server."
     /**
      * @param {Client} client
      * @param {Message} message
