@@ -47,6 +47,6 @@ module.exports = (client) => {
                     i.reply({ content: `Added the ${role} role!`, ephemeral: true })
                 }
             }
-        }
+        })
     }
 }
