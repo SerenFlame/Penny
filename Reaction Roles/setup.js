@@ -1,4 +1,4 @@
-const { Client, Message, MessageActionRow, MessageButton } = require('discord.js');
+const { Client, Message, MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 
 module.exports = (client) => { 
     name: "role"   
@@ -7,14 +7,46 @@ module.exports = (client) => {
      * @param {Message} message
      * @param {String[]} args
      */
-    run: async (client, message, args) => {
+    async run(client, message, args) => {
     const row = new MessageActionRow().addComponents(
-            new MessageButton
-                .setCustomId("random")
+            new MessageButton()
+                .setCustomId("djs")
                 .setLabel("primary")
                 .setStyle("PRIMARY")
-                .setDisabled(true),
+            new MessageButton()
+                .setCustomId("dpy")
+                .setLabel("secondary")
+                .setStyle("SECONDARY")
                 )
-        messageCreate.channel.send({ content: "Hello World", components: [row] })
+        const roles_embed = new Discord.MessageEmbed()
+        .setColor("BLUE")
+        .setDescription("Get your roles to access more of the server.")
+
+        const m = await messageCreate.channel.send({ embeds: [roles_embed], components: [row] })
+
+        const iFilter = i => i.user.id === message.author.id
+
+        const collector = m.createMessageComponentCollector({ filter: iFilter, time: 60000})
+
+        collector.on('collect', async i => {
+            if(i.customId === 'djs'){
+                const role = message.guild.roles.cache.get('870135591835168778')
+                if(i.member.roles.cache?.has('870135591835168778')){
+                    i.member.roles.remove('870135591835168778')
+                    i.reply({ content: `Removed the ${role} role!`, ephemeral: true })
+                } else {
+                    i.member.roles.add('870135591835168778')
+                    i.reply({ content: `Added the ${role} role!`, ephemeral: true })
+            if(i.customId === 'dpy'){
+                const role = message.guild.roles.cache.get('870135591835168778')
+                if(i.member.roles.cache?.has('870135591835168778')){
+                    i.member.roles.remove('870135591835168778')
+                     i.reply({ content: `Removed the ${role} role!`, ephemeral: true })
+                } else {
+                    i.member.roles.add('870135591835168778')
+                    i.reply({ content: `Added the ${role} role!`, ephemeral: true })
+                }
+            }
+        })
     }
 }
