@@ -17,11 +17,15 @@ const client = new Discord.Client({
 
 const prefix = '!'
 const welcome = require('./commands/welcome'); 
+const setup = require('./Reaction Roles/setup');
+const EditMessage = require('./utils/EditMessage');
 
 client.on('ready', () =>{
     console.log('Bot online')
 
     welcome(client);
+    EditMessage(client);
+    setup(client);
 })
 
 client.on("messageCreate", async messageCreate => {
