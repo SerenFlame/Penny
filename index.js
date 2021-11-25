@@ -101,7 +101,7 @@ client.on('messageCreate', messageCreate => {
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
         if (command === 'reactionrole') {
-            client.commands.get('reactionrole').execute(message, args, Discord, client);
+            client.commands.get('reactionrole').then(message, args, Discord, client);
         } 
       
     });
