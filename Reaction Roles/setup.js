@@ -30,20 +30,20 @@ module.exports = (client) => {
 
         collector.on('collect', async i => {
             if(i.customId === 'djs'){
-                const role = message.guild.roles.cache.get('870135591835168778')
-                if(i.member.roles.cache?.has('870135591835168778')){
-                    i.member.roles.remove('870135591835168778')
+                const role = message.guild.roles.cache.get('913474970930249778')
+                if(i.member.roles.cache?.has('913474970930249778')){
+                    i.member.roles.remove('913474970930249778')
                     i.reply({ content: `Removed the ${role} role!`, ephemeral: true })
                 } else {
-                    i.member.roles.add('870135591835168778')
+                    i.member.roles.add('913474970930249778')
                     i.reply({ content: `Added the ${role} role!`, ephemeral: true })
             if(i.customId === 'dpy'){
-                const role = message.guild.roles.cache.get('870135591835168778')
-                if(i.member.roles.cache?.has('870135591835168778')){
-                    i.member.roles.remove('870135591835168778')
+                const role = message.guild.roles.cache.get('913475023619100752')
+                if(i.member.roles.cache?.has('913475023619100752')){
+                    i.member.roles.remove('913475023619100752')
                      i.reply({ content: `Removed the ${role} role!`, ephemeral: true })
                 } else {
-                    i.member.roles.add('870135591835168778')
+                    i.member.roles.add('913475023619100752')
                     i.reply({ content: `Added the ${role} role!`, ephemeral: true })
                 }
             }
