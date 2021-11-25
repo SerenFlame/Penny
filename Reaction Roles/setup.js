@@ -12,11 +12,11 @@ module.exports = (client) => {
             new MessageButton()
                 .setCustomId("djs")
                 .setLabel("primary")
-                .setStyle("PRIMARY")
+                .setStyle("PRIMARY"),
             new MessageButton()
                 .setCustomId("dpy")
                 .setLabel("secondary")
-                .setStyle("SECONDARY")
+                .setStyle("SECONDARY"),
                 )
         const roles_embed = new Discord.MessageEmbed()
         .setColor("BLUE")
