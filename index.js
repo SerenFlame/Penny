@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const buttons = require('discord-buttons')(client)
 const client = new Discord.Client({
     
     allowedMentions: {
