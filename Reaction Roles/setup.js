@@ -14,7 +14,6 @@ module.exports = (client) => {
                 .setLabel("primary")
                 .setStyle("PRIMARY")
                 .setDisabled(true)
-            )
         );
         messageCreate.channel.send({ content: "Hello World", components: [] })
     }
