@@ -1,7 +1,20 @@
-const FirstMessage = require('./first-message')
+const { MessageEmbed, ReactionUserManager } = require('discord.js')
 
 module.exports = { 
-    const channelID = '870135591835168778'
+    name: "reactionrole"
+    description: "Set up a reaction role message."
 
-    FirstMessage(client, channelID, 'Hello World', [])
+    async ReactionUserManager(bot, message, args) {
+        const channelID =  '870135591835168778'
+
+        const desc = args.slice(1).join(" ")
+        
+        Let embed = new MessageEmbed()
+        .setColor('WHITE')
+        .setTitle("Title")
+        .setDescription()
+
+        message.channel.send(embed)
+
+    }
 }
