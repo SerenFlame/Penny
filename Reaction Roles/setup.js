@@ -7,7 +7,6 @@ module.exports = {
      * @param {Message} message
      * @param {String[]} args
      */
-    async {client, message, args} => {
         const row = new MessageActionRow().addComponents(
             new MessageButton(
                 .setCustomId("random")
@@ -16,5 +15,4 @@ module.exports = {
             )
         );
         messageCreate.channel.send({content: "Hello World", components: []})
-    }
 }
