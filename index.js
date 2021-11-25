@@ -19,6 +19,7 @@ const prefix = "!";
 const welcome = require('./commands/welcome'); 
 const setup = require('./Reaction Roles/setup');
 const fs = require('fs');
+
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -94,6 +95,7 @@ client.on('messageCreate', messageCreate => {
     
     });
 
+    module.exports.run = async function (client, message, args, config, gdb, prefix, permissionLevel, db)
     client.on('message', message => {
  
         if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -101,7 +103,7 @@ client.on('messageCreate', messageCreate => {
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
         if (command === 'reactionrole') {
-            client.commands.get('reactionrole').run(message, args, Discord, client);
+            client.commands.get('reactionrole').execute(message, args, Discord, client);
         } 
       
     });
