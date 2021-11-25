@@ -95,7 +95,7 @@ client.on('messageCreate', messageCreate => {
     
     });
 
-    module.exports.run = async function (client, message, args, config, gdb, prefix, permissionLevel, db)
+    module.exports.run = async function (client, message, args, config, gdb, prefix, permissionLevel, db) = {
     client.on('message', message => {
  
         if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -106,6 +106,7 @@ client.on('messageCreate', messageCreate => {
             client.commands.get('reactionrole').execute(message, args, Discord, client);
         } 
       
-    });
+    })
+}
 
 client.login(process.env.token);
