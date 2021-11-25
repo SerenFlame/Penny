@@ -50,7 +50,7 @@ client.on("messageCreate", async messageCreate => {
 
 client.on('messageCreate', messageCreate => {
 
-    if(messageCreate.content === ',prompt') {
+    if(messageCreate.content === '!prompt') {
               rndmessage(messageCreate);
     
                 function rndmessage(messageCreate) {
