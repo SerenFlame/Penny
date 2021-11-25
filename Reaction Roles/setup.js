@@ -7,7 +7,7 @@ module.exports = (client) => {
      * @param {Message} message
      * @param {String[]} args
      */
-    async run(client, message, args) => {
+    run: async (client, message, args) => {
     const row = new MessageActionRow().addComponents(
             new MessageButton()
                 .setCustomId("djs")
