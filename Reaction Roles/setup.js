@@ -7,7 +7,7 @@ module.exports = {
      * @param {Message} message
      * @param {String[]} args
      */
-    run: async {client, message, args} => {
+    async {client, message, args} => {
         const row = new MessageActionRow().addComponents(
             new MessageButton(
                 .setCustomId("random")
