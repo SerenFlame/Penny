@@ -19,7 +19,6 @@ client.on('ready', () =>{
     console.log('Bot online')
 
     welcome(client);
-    EditMessage(client);
     setup(client);
 })
 
