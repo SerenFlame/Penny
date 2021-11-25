@@ -1,12 +1,63 @@
-const { MessageEmbed } = require('discord.js')
-const EditMessage = require('../utils/EditMessage')
-
-module.exports = (client) => {
-    EditMessage(client, '870135591835168778', new MessageEmbed()
-    .setTitle('Reaction Roles')
-    .setColor('RANDOM')
-    .setDescription('Claim roles using reactions.')
-    .setFooter('Reaction Roles')
-    , ['<:HI:913463532576731207>', '<:LOVESTRUCK:913463533990182912>', '<:PISSED:913463533923090473>', '<:POGIPOINTS:913463533923086376>', '<:SAD:913463533272969216>', '<:STRESSED:913463533067452436>' 
-])
-}
+module.exports = {
+    name: 'reactionrole',
+    description: "Sets up a reaction role message!",
+    async execute(message, args, Discord, client) {
+        const channel = 'YOUR_CHANNEL';
+        const yellowTeamRole = message.guild.roles.cache.find(role => role.name === "913474970930249778");
+        const blueTeamRole = message.guild.roles.cache.find(role => role.name === "913475023619100752");
+ 
+        const yellowTeamEmoji = '🎟';
+        const blueTeamEmoji = '🎫';
+ 
+        let embed = new Discord.MessageEmbed()
+            .setColor('#e42643')
+            .setTitle('Choose a team to play on!')
+            .setDescription('Choosing a team will allow you to interact with your teammates!\n\n'
+                + `${yellowTeamEmoji} for yellow team\n`
+                + `${blueTeamEmoji} for blue team`);
+ 
+        let messageEmbed = await message.channel.send(embed);
+        messageEmbed.react(yellowTeamEmoji);
+        messageEmbed.react(blueTeamEmoji);
+ 
+        client.on('messageReactionAdd', async (reaction, user) => {
+            if (reaction.message.partial) await reaction.message.fetch();
+            if (reaction.partial) await reaction.fetch();
+            if (user.bot) return;
+            if (!reaction.message.guild) return;
+ 
+            if (reaction.message.channel.id == channel) {
+                if (reaction.emoji.name === yellowTeamEmoji) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.add(yellowTeamRole);
+                }
+                if (reaction.emoji.name === blueTeamEmoji) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.add(blueTeamRole);
+                }
+            } else {
+                return;
+            }
+ 
+        });
+ 
+        client.on('messageReactionRemove', async (reaction, user) => {
+ 
+            if (reaction.message.partial) await reaction.message.fetch();
+            if (reaction.partial) await reaction.fetch();
+            if (user.bot) return;
+            if (!reaction.message.guild) return;
+ 
+ 
+            if (reaction.message.channel.id == channel) {
+                if (reaction.emoji.name === yellowTeamEmoji) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.remove(yellowTeamRole);
+                }
+                if (reaction.emoji.name === blueTeamEmoji) {
+                    await reaction.message.guild.members.cache.get(user.id).roles.remove(blueTeamRole);
+                }
+            } else {
+                return;
+            }
+        });
+    }
+ 
+}   
