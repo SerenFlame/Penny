@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const prefix = "+"
 const client = new Discord.Client({
     
     allowedMentions: {
@@ -17,11 +16,13 @@ const client = new Discord.Client({
 })
 
 const welcome = require('./commands/welcome'); 
+const roleClaim = require('./role-claim')
 
 client.on('ready', () =>{
     console.log('Bot online')
 
     welcome(client);
+    roleClaim(client)
 })
 
 client.on("messageCreate", async messageCreate => {
@@ -83,20 +84,5 @@ client.on('messageCreate', messageCreate => {
     }
     
     });
-
-    client.on('message', message => {
-        if(!message.content.startsWith(prefix)||message.author.bot) return
-    
-        const args = message.content.slice(prefix.length).split(/ +/)
-        const command = args.shift().toLowerCase()
-    
-        if(command === 'ping'){
-            client.commands.get('ping').execute(message, args)
-        } else if(command === 'yt'){
-            client.commands.get('yt').execute(message, args)
-        } else if(command === 'purge'){
-            client.commands.get('purge').execute(message, args)
-        }
-    })
 
 client.login(process.env.token);
