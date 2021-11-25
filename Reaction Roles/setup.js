@@ -9,12 +9,11 @@ module.exports = (client) => {
      */
     run: async (client, message, args) => {
     const row = new MessageActionRow().addComponents(
-            new MessageButton()
+            new MessageButton
                 .setCustomId("random")
                 .setLabel("primary")
                 .setStyle("PRIMARY")
                 .setDisabled(true)
-        );
         messageCreate.channel.send({ content: "Hello World", components: [] })
     }
 }
