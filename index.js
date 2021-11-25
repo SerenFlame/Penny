@@ -95,7 +95,7 @@ client.on('messageCreate', messageCreate => {
     
     });
 
-    module.exports.run = async function (client, message, args, config, gdb, prefix, permissionLevel, db) = {
+    module.exports.run = async function (client, message, args, config, gdb, prefix, permissionLevel, db) {
     client.on('message', message => {
  
         if (!message.content.startsWith(prefix) || message.author.bot) return;
