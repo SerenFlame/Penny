@@ -12,17 +12,17 @@ module.exports = (client) => {
             new MessageButton()
                 .setCustomId("djs")
                 .setLabel("primary")
-                .setStyle("PRIMARY"),
+                .setStyle("PRIMARY"))
+    const column = new MessageActionRow().addComponents(
             new MessageButton()
                 .setCustomId("dpy")
                 .setLabel("secondary")
-                .setStyle("SECONDARY"),
-                )
+                .setStyle("SECONDARY"))
         const roles_embed = new Discord.MessageEmbed()
         .setColor("BLUE")
         .setDescription("Get your roles to access more of the server.")
 
-        const m = await messageCreate.channel.send({ embeds: [roles_embed], components: [row] })
+        const m = await messageCreate.channel.send({ embeds: [roles_embed], components: [row, column] })
 
         const iFilter = i => i.user.id === message.author.id
 
