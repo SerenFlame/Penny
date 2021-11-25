@@ -1,52 +1,37 @@
-const { Client, Message, MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const {
+    Client,
+    Message,
+    MessageEmbed
+} = require('discord.js');
+const schema = require('../../models/autorole')
 
-module.exports = (client) => { 
-    name: "role"   
-    /**
-     * @param {Client} client
-     * @param {Message} message
-     * @param {String[]} args
+module.exports = {
+    name: 'autorole',
+    /** 
+     * @param {Client} client 
+     * @param {Message} message 
+     * @param {String[]} args 
      */
-    run: async (client, message, args) => {
-    const row = new MessageActionRow().addComponents(
-            new MessageButton()
-                .setCustomId("djs")
-                .setLabel("primary")
-                .setStyle("PRIMARY"))
-    const column = new MessageActionRow().addComponents(
-            new MessageButton()
-                .setCustomId("dpy")
-                .setLabel("secondary")
-                .setStyle("SECONDARY"))
-        const roles_embed = new Discord.MessageEmbed()
-        .setColor("BLUE")
-        .setDescription("Get your roles to access more of the server.")
+    run: async (client, message, args, Discord) => {
 
-        const m = await messageCreate.channel.send({ embeds: [roles_embed], components: [row, column] })
+        const role = await message.mentions.roles.first() || message.guild.roles.cache.get(args[0]);
 
-        const iFilter = i => i.user.id === message.author.id
+        if (!role) return message.reply('Mention a role');
 
-        const collector = m.createMessageComponentCollector({ filter: iFilter, time: 60000})
-
-        collector.on('collect', async i => {
-            if(i.customId === 'djs'){
-                const role = message.guild.roles.cache.get('913474970930249778')
-                if(i.member.roles.cache?.has('913474970930249778')){
-                    i.member.roles.remove('913474970930249778')
-                    i.reply({ content: `Removed the ${role} role!`, ephemeral: true })
-                } else {
-                    i.member.roles.add('913474970930249778')
-                    i.reply({ content: `Added the ${role} role!`, ephemeral: true })
-            if(i.customId === 'dpy'){
-                const role = message.guild.roles.cache.get('913475023619100752')
-                if(i.member.roles.cache?.has('913475023619100752')){
-                    i.member.roles.remove('913475023619100752')
-                     i.reply({ content: `Removed the ${role} role!`, ephemeral: true })
-                } else {
-                    i.member.roles.add('913475023619100752')
-                    i.reply({ content: `Added the ${role} role!`, ephemeral: true })
-                }
+        schema.findOne({
+            guild: message.guild.id
+        }, async (err, data) => {
+            if (err) throw err
+            if (data) {
+                message.channel.send('auto role is already setup')
+            } else {
+                data = new schema({
+                    guild: message.guild.id,
+                    role: role.id
+                })
+                await data.save();
+                message.channel.send('done!')
             }
-        }
+        })
     }
-})
+}
