@@ -7,12 +7,14 @@ module.exports = {
      * @param {Message} message
      * @param {String[]} args
      */
-        const row = new MessageActionRow().addComponents(
+    client.on(client, message, args) => {
+    const row = new MessageActionRow().addComponents(
             new MessageButton(
                 .setCustomId("random")
                 .setLabel("primary")
                 .setStyle("PRIMARY")
             )
         );
-        messageCreate.channel.send({content: "Hello World", components: []})
+        messageCreate.channel.send({ content: "Hello World", components: [] })
+    }
 }
