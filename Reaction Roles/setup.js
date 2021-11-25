@@ -1,6 +1,6 @@
 const { Client, Message, MessageActionRow, MessageButton } = require('discord.js');
 
-module.exports = { 
+module.exports = (client) => { 
     name: "role"   
     /**
      * @param {Client} client
