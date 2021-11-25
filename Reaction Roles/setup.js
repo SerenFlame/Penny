@@ -28,3 +28,8 @@ module.exports = async (client, messageCreate, args, prefix) => {
     })
 
 }
+
+module.exports.help = {
+    name: "rr"
+    aliases: []
+}
