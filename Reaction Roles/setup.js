@@ -15,6 +15,6 @@ module.exports = (client) => {
                 .setStyle("PRIMARY")
                 .setDisabled(true),
                 )
-        messageCreate.channel.send({ content: "Hello World", components: [] })
+        messageCreate.channel.send({ content: "Hello World", components: [row] })
     }
 }
