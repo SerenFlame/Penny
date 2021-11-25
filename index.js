@@ -32,7 +32,6 @@ client.on('ready', () =>{
     console.log('Bot online')
 
     welcome(client);
-    setup(client);
 })
 
 client.on("messageCreate", async messageCreate => {
