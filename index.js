@@ -15,7 +15,6 @@ const client = new Discord.Client({
     ],
 })
 
-const prefix = "!";
 const welcome = require('./commands/welcome'); 
 const setup = require('./Reaction Roles/setup');
 
