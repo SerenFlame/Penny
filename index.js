@@ -16,7 +16,6 @@ const client = new Discord.Client({
 })
 
 const welcome = require('./commands/welcome'); 
-const setup = require('./Reaction Roles/setup');
 
 client.on('ready', () =>{
     console.log('Bot online')
