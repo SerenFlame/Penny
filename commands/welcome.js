@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = (client) => {
 const channelID = "901508589615718451";
 const rulechannel = "870135160497135627";
-const intro = "870139123405586473";
+const intro = "870135782340444240";
 client.on("guildMemberAdd", (member) => {
     console.log(member);
     const channel = member.guild.channels.cache.get(channelID);
