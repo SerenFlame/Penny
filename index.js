@@ -379,7 +379,8 @@ client.on('messageCreate', messageCreate => {
     
                     messageCreate.channel.send(messages[rnd]);
                 }
-    }
+        }
+    });
     
 client.on('messageCreate', messageCreate => {
 
