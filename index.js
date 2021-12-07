@@ -496,7 +496,7 @@ client.on('messageCreate', messageCreate => {
                             "You have an immense amount of potential.",
                             "Repeat after me, “One of my most remarkable qualities is [fill in the blank].”",
                             "You are worthy of the compliments you receive.",
-                            "The only approval you need is your own.",
+                            "The only approval you need is your own."
                     ];
                         var rnd = Math.floor(Math.random()*messages.length);
         
