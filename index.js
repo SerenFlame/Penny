@@ -457,7 +457,7 @@ client.on('messageCreate', messageCreate => {
                             "Sometimes, what is difficult and challenging enhances your growth.",
                             "You are not in control of others, but you are in control of yourself",
                             "I am proud of you for all you have accomplished no matter how small or great",
-                            "Listen to your needs.",
+                            'Listen to your needs.',
                             "One step at a time.",
                             "To be human is to fail and to make mistakes.",
                             "It is okay if you think it’s taking more time than you thought.",
