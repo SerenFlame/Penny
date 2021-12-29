@@ -29,9 +29,6 @@ client.on("messageCreate", async messageCreate => {
     }
 })
 
-client.on("messageCreate", async messageCreate => {
-    if(messageCreate.content === "Hi"){
-        messageCreate.channel.send("Hello! :wave:")
     }
 })
 
