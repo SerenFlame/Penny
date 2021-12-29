@@ -24,13 +24,13 @@ client.on('ready', () =>{
 })
 
 client.on("messageCreate", async messageCreate => {
-    if(messageCreate.content === "hello", "Hello"){
+    if(messageCreate.content === "Hello"){
         messageCreate.channel.send("Hi! :heart:")
     }
 })
 
 client.on("messageCreate", async messageCreate => {
-    if(messageCreate.content === "hi", "Hi"){
+    if(messageCreate.content === "Hi"){
         messageCreate.channel.send("Hello! :wave:")
     }
 })
