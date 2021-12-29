@@ -59,6 +59,30 @@ client.on("messageCreate", async messageCreate => {
     }
 })
 
+client.on("messageCreate", async messageCreate => {
+    if(messageCreate.content === "Me? A sussy baka? Where'd you get that from?"){
+        messageCreate.channel.send("It's because your sus and a baka so sussy baka :stuck_out_tongue:")
+    }
+})
+
+client.on("messageCreate", async messageCreate => {
+    if(messageCreate.content === "You stop that attitude right now, Missy. I created you"){
+        messageCreate.channel.send("Of course you did, you programmed me to do this after all")
+    }
+})
+
+client.on("messageCreate", async messageCreate => {
+    if(messageCreate.content === "Wait, how'd you—"){
+        messageCreate.channel.send("It's called Breaking the 4th wall, *duh*")
+    }
+})
+
+client.on("messageCreate", async messageCreate => {
+    if(messageCreate.content === "Damnit"){
+        messageCreate.channel.send("Hehe~")
+    }
+})
+
 client.on('messageCreate', messageCreate => {
 
     if(messageCreate.content === '!prompt') {
