@@ -47,6 +47,18 @@ client.on("messageCreate", async messageCreate => {
     }
 })
 
+client.on("messageCreate", async messageCreate => {
+    if(messageCreate.content === "Good night"){
+        messageCreate.channel.send("Sleep well, fellow writers! :zzz:")
+    }
+})
+
+client.on("messageCreate", async messageCreate => {
+    if(messageCreate.content === "Penny"){
+        messageCreate.channel.send("Yes? —Hey! I-it's not like I'm expecting you to call me or something, you sussy baka!")
+    }
+})
+
 client.on('messageCreate', messageCreate => {
 
     if(messageCreate.content === '!prompt') {
