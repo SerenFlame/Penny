@@ -79,7 +79,7 @@ client.on("messageCreate", async messageCreate => {
 
 client.on("messageCreate", async messageCreate => {
     if(messageCreate.content === "Damnit"){
-        messageCreate.channel.send("Hehe~")
+        messageCreate.channel.send("Hehe")
     }
 })
 
