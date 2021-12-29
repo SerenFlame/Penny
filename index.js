@@ -29,9 +29,6 @@ client.on("messageCreate", async messageCreate => {
     }
 })
 
-    }
-})
-
 client.on("messageCreate", async messageCreate => {
     if(messageCreate.content === "Good night"){
         messageCreate.channel.send("Sleep well, fellow writers! :zzz:")
