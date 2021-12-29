@@ -54,7 +54,7 @@ client.on("messageCreate", async messageCreate => {
 })
 
 client.on("messageCreate", async messageCreate => {
-    if(messageCreate.content === "Penny"){
+    if(messageCreate.content === "Nice, Penny is back online"){
         messageCreate.channel.send("Yes? —Hey! I-it's not like I'm expecting you to call me or something, you sussy baka!")
     }
 })
