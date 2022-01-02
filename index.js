@@ -426,7 +426,6 @@ client.on('messageCreate', messageCreate => {
                             "You deserve a hug right now.",
                             "On a scale from 1 to 10, you're an 11.",
                             "You're even more beautiful on the inside than you are on the outside.",
-                            "It's ok.",
                             "You’re not alone in this.",
                             "You are important to me. You matter to me and so do your feelings.",
                             "You will survive this. And when it’s over, I will be here and so will you.",
